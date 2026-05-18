@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Personal",
+    "url": "https://example.com/personal-calendar.ics"
+  },
+  {
+    "name": "Work",
+    "url": "https://example.com/work-calendar.ics"
+  },
+  {
+    "name": "Study",
+    "url": "https://example.com/study-calendar.ics"
+  }
+]
