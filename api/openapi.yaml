@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: Serverless iCal GPT Calendar Reader
+  version: 1.0.0
+paths:
+  /events:
+    get:
+      operationId: getCalendarEvents
+      summary: Retrieve calendar events from iCal feeds
+      parameters:
+        - in: query
+          name: days_offset
+          schema:
+            type: integer
+          description: Number of days from today
+        - in: query
+          name: range_days
+          schema:
+            type: integer
+          description: Number of days to include in the search
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  start_date:
+                    type: string
+                  end_date:
+                    type: string
+                  total_events:
+                    type: integer
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        date:
+                          type: string
+                        time:
+                          type: string
+                        calendar:
+                          type: string
