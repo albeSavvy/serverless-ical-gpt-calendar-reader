@@ -1,45 +1,48 @@
 # AWS Serverless iCal GPT Calendar Reader
 
-## Overview
+## Project in One Sentence
 
-This project implements a serverless AWS API that reads multiple iCal calendar feeds, parses upcoming events, and exposes structured calendar data to a GPT-based assistant through Amazon API Gateway and AWS Lambda.
+I built a serverless AWS API that reads iCal calendar feeds and exposes structured upcoming events to a GPT-based assistant through API Gateway and Lambda.
 
-The project was designed as a hands-on AWS serverless integration and AI automation exercise, with a focus on API design, calendar parsing, external service integration, cost optimization, monitoring, and security best practices.
+## What I Built
 
-## Business Scenario
+This project is a lightweight cloud-based calendar assistant backend designed to retrieve events from multiple iCal feeds and expose them through a simple API.
 
-Users often manage multiple calendars across personal, work, study, sport, and recurring activity categories. Manually checking each calendar can be inefficient, especially when trying to ask natural-language questions such as:
+It includes:
 
-- What do I have today?
-- What events are scheduled tomorrow?
-- What is planned for the next week?
-- Which calendar does this event belong to?
+- iCal feed ingestion
+- recurring event parsing
+- API Gateway integration
+- Lambda-based event processing
+- GPT-friendly JSON responses
+- configurable calendar sources
+- CloudWatch logging
 
-This project exposes calendar data through a simple API so that a Custom GPT or AI assistant can retrieve structured calendar events and generate user-friendly answers.
+## Why I Built It
 
-## Architecture
+I built this project to practice AWS serverless APIs and AI integration workflows in a realistic personal productivity and automation scenario.
+
+The goal was to move beyond theoretical study and experiment with how GPT assistants can interact with external services through APIs.
+
+## Architecture at a Glance
 
 ```text
-User asks calendar question
-        |
-        v
-Custom GPT Action
-        |
-        v
-Amazon API Gateway
+Published iCal Feeds
         |
         v
 AWS Lambda
-Calendar Reader / Parser
+Calendar Parsing
         |
         v
-External iCal Feeds
+Amazon API Gateway
+REST API Endpoint
         |
         v
-JSON Response
+Custom GPT Action
+Calendar Requests
         |
         v
-GPT-generated answer
+Structured JSON Response
 ```
 
 ## AWS Services Used
@@ -60,7 +63,7 @@ GPT-generated answer
 - Support for recurring events through RRULE parsing
 - Support for EXDATE exclusions
 - Europe/Rome timezone handling
-- JSON response optimized for GPT Actions
+- GPT-friendly JSON response format
 - No hardcoded personal calendar URLs
 - CloudWatch logging
 - Cost-conscious AWS design
@@ -96,50 +99,14 @@ GET /events?days_offset=0&range_days=1
 }
 ```
 
-## Repository Structure
+## What I Learned
 
-```text
-serverless-ical-gpt-calendar-reader/
-│
-├── README.md
-├── .gitignore
-├── lambda/
-│   └── lambda_function.py
-├── api/
-│   ├── openapi.yaml
-│   └── README.md
-├── config/
-│   ├── calendars.example.json
-│   └── README.md
-├── architecture/
-│   ├── README.md
-│   ├── data-flow.md
-│   └── design-decisions.md
-├── docs/
-│   ├── project-overview.md
-│   ├── setup-guide.md
-│   ├── custom-gpt-action.md
-│   ├── security.md
-│   ├── cost-optimization.md
-│   ├── monitoring.md
-│   └── cleanup.md
-└── tests/
-    └── sample_event.json
-```
-
-## Certification Alignment
-
-This project supports practical learning for AWS and cloud architecture topics such as:
-
-- Serverless API design
-- Lambda-based integration
-- API Gateway configuration
-- IAM execution roles
-- External API/feed integration
-- CloudWatch monitoring
-- Cost optimization
-- Secure configuration management
-- AI assistant API integration
+- How API Gateway and Lambda can expose serverless APIs
+- How to parse and process iCal feeds programmatically
+- How recurring events and RRULE logic work
+- How GPT Actions can integrate with external APIs
+- How to structure JSON responses for AI assistants
+- How to think about security, monitoring, cleanup, and cost optimization
 
 ## Future Improvements
 
@@ -150,6 +117,36 @@ This project supports practical learning for AWS and cloud architecture topics s
 - Add unit tests for iCal parsing
 - Add CI/CD deployment with GitHub Actions
 - Add Infrastructure as Code with AWS SAM, CDK, or Terraform
+
+## Technical Documentation
+
+- [Architecture Diagram](architecture/README.md)
+- [Custom GPT Action](docs/custom-gpt-action.md)
+- [Setup Guide](docs/setup-guide.md)
+- [Security](docs/security.md)
+- [Cost Optimization](docs/cost-optimization.md)
+- [Monitoring](docs/monitoring.md)
+- [Cleanup](docs/cleanup.md)
+- [OpenAPI Specification](api/openapi.yaml)
+
+## Certification Alignment
+
+This project supports practical learning for AWS and cloud architecture topics such as serverless API design, Lambda integration, API Gateway configuration, IAM execution roles, CloudWatch monitoring, cost optimization, and AI assistant API integrations.
+
+## Repository Structure
+
+```text
+serverless-ical-gpt-calendar-reader/
+│
+├── README.md
+├── .gitignore
+├── lambda/
+├── api/
+├── config/
+├── architecture/
+├── docs/
+└── tests/
+```
 
 ## Author
 
